@@ -1,0 +1,246 @@
+Albus JS (1971) A theory of cerebellar function. Math Biosci 10:25– 61.
+CrossRef
+
+Anzai M, Kitazawa H, Nagao S (2010) Effects of reversible pharmacological
+shutdown of cerebellar flocculus on the memory of long-term horizontal
+vestibuloocular reflex adaptation in monkeys. Neurosci Res 68:191–198.
+CrossRef Medline
+
+Arenz A, Silver RA, Schaefer AT, Margrie TW (2008) The contribution of
+single synapses to sensory representation in vivo. Science 321:977–980.
+CrossRef Medline
+
+Badura A, Schonewille M, Voges K, Galliano E, Renier N, Gao Z, Witter L,
+Hoebeek FE, Che´dotal A, De Zeeuw CI (2013) Climbing fiber input
+shapes reciprocity of Purkinje cell firing. Neuron 78:700 –713. CrossRef
+Medline
+
+Barmack NH, Yakhnitsa V (2008) Functions of interneurons in mouse cerebellum.
+J Neurosci 28:1140 –1152. CrossRef Medline
+
+Belmeguenai A, Hosy E, Bengtsson F, Pedroarena CM, Piochon C, Teuling E,
+He Q, Ohtsuki G, De Jeu MT, Elgersma Y, De Zeeuw CI, Jo¨rntell H,
+Hansel C (2010) Intrinsic plasticity complements long-term potentiation
+in parallel fiber input gain control in cerebellar Purkinje cells. J Neurosci
+30:13630 –13643. CrossRef Medline
+
+Clopath, Badura et al. • Vestibulo-Ocular Reflex Adaptation In Wild-Type and Mutant Mice J. Neurosci., May 21, 2014 • 34(21):7203–7215 • 7213
+Boyden ES, Katoh A, Raymond JL (2004) Cerebellum-dependent learning:
+the role of multiple plasticity mechanisms. Annu Rev Neurosci 27:581–
+609. CrossRef Medline
+
+Broussard DM, Kassardjian CD (2004) Learning in a simple motor system.
+Learn Mem 11:127–136. CrossRef Medline
+
+Brunel N, Hakim V, Isope P, Nadal JP, Barbour B (2004) Optimal information
+storage and the distribution of synaptic weights: perceptron versus
+Purkinje cell. Neuron 43:745–757. CrossRef Medline
+
+Cheron G, Escudero M, Godaux E (1996) Discharge properties of brain
+stem neurons projecting to the flocculus in the alert cat. I. Medical vestibular
+nucleus. J Neurophysiol 76:1759 –1774. Medline
+
+Coesmans M, Weber JT, De Zeeuw CI, Hansel C (2004) Bidirectional parallel
+fiber plasticity in the cerebellum under climbing fiber control. Neuron
+44:691–700. CrossRef Medline
+
+D’Angelo E, Rossi P, Armano S, Taglietti V (1999) Evidence for Nmda and
+mGlu receptor-dependent long-term potentiation of mossy fiber granule
+cell transmission in rat cerebellum. J Neurophysiol 81:277–287. Medline
+
+Dean P, Porrill J, Stone JV (2002) Decorrelation control by the cerebellum
+achieves oculomotor plant compensation in simulated vestibulo-ocular
+reflex. Proc Biol Sci 269:1895–1904. CrossRef Medline
+
+De Zeeuw CI, Wylie DR, Stahl JS, Simpson JI (1995) Phase relations of
+Purkinje cells in the rabbit flocculus during compensatory eye movements.
+J Neurophysiol 74:2051–2064. Medline
+
+FujitaM (1982) Simulation of adaptive modification of the vestibulo-ocular
+reflex with an adaptive filter model of the cerebellum. Biol Cybern 45:
+207–214. CrossRef Medline
+
+Galliano E, Gao Z, Schonewille M, Todorov B, Simons E, Pop AS, D’Angelo E,
+van den Maagdenberg AM, Hoebeek FE, De Zeeuw CI (2013) Silencing
+the majority of cerebellar granule cells uncovers their essential role in
+motor learning and consolidation. Cell Rep 3:1239 –1251. CrossRef
+Medline
+
+Gao Z, van Beugen BJ, De Zeeuw CI (2012) Distributed synergistic plasticity
+and cerebellar learning. Nat Rev Neurosci 13:619–635. CrossRef Medline
+
+Gerrits NM, Epema AH, van Linge A, Dalm E (1989) The primary vestibulocerebellar
+projection in the rabbit: absence of primary afferents in the
+flocculus. Neurosci Lett 105:27–33. CrossRef Medline
+
+Gluck, MA, Reifsnider ES, Thompson RF (1990) Adaptive signal processing
+and the cerebellum: models of classical conditioning and VOR adaptation,
+pp 131–185. Hillsdale, NJ: Lawrence Erlbaum Associates.
+
+Goossens HH, Hoebeek FE, Van Alphen AM, Van Der Steen J, Stahl JS, De
+Zeeuw CI, Frens MA (2004) Simple spike and complex spike activity of
+floccular Purkinje cells during the optokinetic reflex in mice lacking cerebellar
+long-term depression. Eur J Neurosci 19:687– 697. CrossRef
+Medline
+
+Hoebeek FE, Stahl JS, van Alphen AM, Schonewille M, Luo C, Rutteman M,
+van den Maagdenberg AM, Molenaar PC, Goossens HH, Frens MA, De
+Zeeuw CI (2005) Increased noise level of Purkinje cell activities minimizes
+impact of their modulation during sensorimotor control. Neuron
+45:953–965. CrossRef Medline
+
+Isope P, Barbour B (2002) Properties of unitary granule cell to Purkinje cell
+synapses in adult rat cerebellar slices. J Neurosci 22:9668 –9678. Medline
+
+XXXXXJEFFXXXXXX         Ito M (1989) Long-term depression. Annu Rev Neurosci 12:85–102.
+CrossRef Medline
+
+Jaeger D (2011) Mini-review: synaptic integration in the cerebellar nuclei
+perspectives from dynamic clamp and computer simulation studies. Cerebellum
+10:659–666. CrossRef Medline
+
+Jo¨rntell H, Hansel C (2006) Synaptic memories upside down: bidirectional
+plasticity at cerebellar parallel fiber-Purkinje cell synapses. Neuron 52:
+227–238. CrossRef Medline
+
+Kassardjian CD, Tan YF, Chung JY, Heskin R, Peterson MJ, Broussard DM
+(2005) The site of a motor memory shifts with consolidation. J Neurosci
+25:7979 –7985. CrossRef Medline
+
+Ke MC, Guo CC, Raymond JL (2009) Elimination of climbing fiber instructive
+signals during motor learning. Nat Neurosci 12:1171–1179. CrossRef
+Medline
+
+Le Guen MC, De Zeeuw CI (2010) Presynaptic plasticity at cerebellar parallel
+fiber terminals. Funct Neurol 25:141–151. Medline
+
+Lisberger SG, Fuchs AF (1978) Role of primate flocculus during rapid behavioral
+modification of vestibuloocular reflex. II. Mossy fiber firing patterns
+during horizontal head rotation and eye movement. J Neurophysiol
+41:764 –777. Medline
+
+Marr D (1969) A theory of cerebellar cortex. J Physiol 202:437– 470.
+Medline
+
+McElvain LE, Bagnall MW, Sakatos A, du Lac S (2010) Bidirectional plasticity
+gated by hyperpolarization controls the gain of postsynaptic firing
+responses at central vestibular nerve synapses. Neuron 68, 763–775.
+Medline
+
+Medina JF (2010) A recipe for bidirectional motor learning: using inhibition
+to cook plasticity in the vestibular nuclei. Neuron 68:607– 609.
+CrossRef Medline
+
+Medina JF (2011) . The multiple roles of Purkinje cells in sensori-motor
+calibration: to predict, teach and command. Curr Opin Neurobiol 21:
+616–622. CrossRef Medline
+
+Medina JF, Mauk MD (1999) Simulations of cerebellar motor learning:
+computational analysis of plasticity at the mossy fiber to deep nucleus
+synapse. J Neurosci 19:7140 –7151. Medline
+
+Medina JF, Nores WL, Ohyama T, Mauk MD (2000) Mechanisms of cerebellar
+learning suggested by eyelid conditioning. Curr Opin Neurobiol
+10:717–724. CrossRef Medline
+
+Medina JF, Garcia KS, Mauk MD (2001) A mechanism for savings in the
+cerebellum. J Neurosci 21:4081– 4089. Medline
+
+Menzies JR, Porrill J, Dutia M, Dean P (2010) Synaptic plasticity in medial
+vestibular nucleus neurons: comparison with computational requirements
+of VOR adaptation. PLoS One 5:e13182. CrossRef Medline
+
+Miles FA, Lisberger SG (1981) Plasticity in the vestibulo-ocular reflex: a new
+hypothesis. Annu Rev Neurosci 4:273–299. CrossRef Medline
+
+Perrett SP, Ruiz BP, Mauk MD (1993) Cerebellar cortex lesions disrupt
+learning-dependent timing of conditioned eyelid responses. J Neurosci
+13:1708 –1718. Medline
+
+Person AL, Raman IM (2010) Deactivation of L-type Ca current by inhibition
+controls LTP at excitatory synapses in the cerebellar nuclei. Neuron
+66:550 –559. CrossRef Medline
+
+Porrill J, Dean P (2007) Cerebellar motor learning: when is cortical plasticity
+not enough? PLoS Comput Biol 3:1935–1950. Medline
+
+Pugh JR, Raman IM (2006) Potentiation of mossy fiber EPSCs in the cerebellar
+nuclei by NMDA receptor activation followed by postinhibitory
+rebound current. Neuron 51:113–123. CrossRef Medline
+
+Raymond JL, Lisberger SG (1998) Neural learning rules for the vestibuloocular
+reflex. J Neurosci 18:9112–9129. Medline
+
+Raymond JL, Lisberger SG, Mauk MD (1996) The cerebellum: a neuronal
+learning machine? Science 272:1126 –1131. CrossRef Medline
+
+Schonewille M, Belmeguenai A, Koekkoek SK, Houtman SH, Boele HJ,
+van Beugen BJ, Gao Z, Badura A, Ohtsuki G, Amerika WE, Hosy E,
+Hoebeek FE, Elgersma Y, Hansel C, De Zeeuw CI (2010) Purkinje
+cell-specific knockout of the protein phosphatase PP2B impairs potentiation
+and cerebellar motor learning. Neuron 67:618–628. CrossRef
+Medline
+
+Schonewille M, Gao Z, Boele HJ, Veloz MF, Amerika WE, Simek AA, De Jeu
+MT, Steinberg JP, Takamiya K, Hoebeek FE, Linden DJ, Huganir RL, De
+Zeeuw CI (2011) Reevaluating the role of LTD in cerebellar motor
+learning. Neuron 70:43–50. CrossRef Medline
+
+Schweizer C, Balsiger S, Bluethmann H, Mansuy IM, Fritschy JM, Mohler H,
+Lu¨scher B (2003) The gamma 2 subunit of GABA(A) receptors is required
+for maintenance of receptors at mature synapses. Mol Cell Neurosci
+24:442– 450. CrossRef Medline
+
+Seja P, Schonewille M, Spitzmaul G, Badura A, Klein I, Rudhard Y, Wisden W,
+Hu¨bner CA, De Zeeuw CI, Jentsch TJ (2012) Raising cytosolic Clin cerebellar
+granule cells affects their excitability and vestibulo-ocular learning.
+EMBO J 31:1217–1230. CrossRef Medline
+
+Shin M, Moghadam SH, Sekirnjak C, Bagnall MW, Kolkman KE, Jacobs R,
+Faulstich M, du Lac S (2011) Multiple types of cerebellar target neurons
+and their circuitry in the vestibulo-ocular reflex. J Neurosci 31:10776–
+10786. CrossRef Medline
+
+Shutoh F, Ohki M, Kitazawa H, Itohara S, Nagao S (2006) Memory trace of
+motor learning shifts transsynaptically from cerebellar cortex to nuclei for
+consolidation. Neuroscience 139:767–777. CrossRef Medline
+
+Soetedjo R, Kojima Y, Fuchs AF (2008) Complex spike activity in the oculomotor
+vermis of the cerebellum: a vectorial error signal for saccade
+motor learning? J Neurophysiol 100:1949 –1966. CrossRef Medline
+
+Stahl JS, van Alphen AM, De Zeeuw CI (2000) A comparison of video and
+magnetic search coil recordings of mouse eye movements. J Neurosci
+Methods 99:101–110. CrossRef Medline
+
+7214 • J. Neurosci., May 21, 2014 • 34(21):7203–7215 Clopath, Badura et al. • Vestibulo-Ocular Reflex Adaptation In Wild-Type and Mutant Mice
+Tomko DL, Paige GD (1992) Linear vestibuloocular reflex during motion
+along axes between nasooccipital and interaural. Ann NY Acad Sci 656:
+233–241. CrossRef Medline
+
+van Alphen AM, Stahl JS, De Zeeuw CI (2001) The dynamic characteristics
+of the mouse horizontal vestibulo-ocular and optokinetic response. Brain
+Res 890:296 –305. CrossRef Medline
+
+van Beugen BJ, Gao Z, Boele HJ, Hoebeek F, De Zeeuw CI (2013) High
+frequency burst firing of granule cells ensures transmission at the parallel
+fiber to Purkinje cell synapse at the cost of temporal coding. Front Neural
+Circuits 7:95. CrossRef Medline
+
+Waespe W, Henn V (1987) Gaze stabilization in the primate. The interaction
+of the vestibulo-ocular reflex, optokinetic nystagmus, and
+smooth pursuit. Rev Physiol Biochem Pharmacol 106:37–125. CrossRef
+Medline
+
+Wetmore DZ, Jirenhed DA, Rasmussen A, Johansson F, Schnitzer MJ, Hesslow
+G (2014) Bidirectional plasticity of Purkinje cells matches temporal
+features of learning. J Neurosci 34:1731–1737. CrossRef Medline
+
+Wulff P, Schonewille M, Renzi M, Viltono L, Sassoe`-Pognetto M, Badura A,
+Gao Z, Hoebeek FE, van Dorp S, Wisden W, Farrant M, De Zeeuw CI
+(2009) Synaptic inhibition of Purkinje cells mediates consolidation of
+vestibulo-cerebellar motor learning. Nat Neurosci 12:1042–1049.
+CrossRef Medline
+
+Zheng N, Raman IM (2010) Synaptic inhibition, excitation, and plasticity in
+neurons of the cerebellar nuclei. Cerebellum 9:56–66. CrossRef Medline
