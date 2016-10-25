@@ -8,34 +8,34 @@ numberGC = 10
 # TauPG = 15*min
 w = 10*(1/second)   # rate at which the platform rotates.
 
-# equations = '''MF = cos(t) : 1           # Mossy fiber response
-# 			   GC = cos(t - x)          # Granule Cell response. There are "N" granule cells, and "x" is the unique phase of each cell.
-# 			   PC = sum(Wpg*G)          # so the "sum" business is "for each x". The way I wrote it will not work. Wpg is a function of x too
-# 			   MVN = MF - PC                     # each as a function of time.
-# 			   MVN_target = gT * cos(t + pT)          # MVN goal for optimal performance.
-# 			   dw/dt = ((MVN - MVN_target)*GC)/TauPG         # This should be a function of x, or "granule cell phase". The MVNs involve a constant phase shift, wherethat phase is the error. Might end up rewriting it in that form that includes a climbing fiber term (at the end of the paragraph after equation 6)
-# 			   '''
-
 MF = NeuronGroup(1,'M = cos(t*w) : 1')
 GC = NeuronGroup(numberGC,'''G = cos((t*w) - x) : 1
 						x : 1''')
+PC = NeuronGroup(1,'P = 1 : 1')
+# S = Synapses(GC,PC,pre='P=sum(GC.G[:])')
+# Wpg = S.connect(GC,PC)
+# print(GC.G[:])
+# print(sum(GC.G[:]))
+#
+#
 for i in range(0, numberGC):
-	GC.x[i] = (i/numberGC)*math.pi*2                # makes it so that the delays are distributed evenly
-# help(subplot)
-print(GC.x)
-MF_state = StateMonitor(MF,'M',record=0)
-GC_state = StateMonitor(GC,'G',record=range(0, numberGC))
+ 	GC.x[i] = (i/numberGC)*math.pi*2                # makes it so that the delays are distributed evenly
+# # help(subplot)
+# print(GC.x)
+# MF_state = StateMonitor(MF,'M',record=0)
+# GC_state = StateMonitor(GC,'G',record=range(0, numberGC))
 run(1*second)
-figure()
-subplot(211)
-plot(MF_state.t/ms,MF_state.M[0])
-
-for i in range(0, numberGC):
-	figure()
-	subplot(211)
-	plot(GC_state.t/ms,GC_state.G[i])
-
-show()
+print(sum(GC.G[:]))
+# figure()
+# subplot(211)
+# plot(MF_state.t/ms,MF_state.M[0])
+#
+# for i in range(0, numberGC):
+# 	figure()
+# 	subplot(211)
+# 	plot(GC_state.t/ms,GC_state.G[i])
+#
+# show()
 
 
 
