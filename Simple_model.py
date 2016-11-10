@@ -3,9 +3,10 @@ import math
 
 numberGC = 10
 
-# gT = 0        # target gain. Should vary a bit depending on day of training.
-# pT = 0        # target phase shift.
-TauPG = 15*min
+gT = 0        # target gain. Should vary a bit depending on day of training.
+pT = 0        # target phase shift.
+errorDelay = 0
+TauPG = 9*second
 w = 10*(1/second)   # rate at which the platform rotates.
 
 ## make the neuron groups
@@ -24,10 +25,10 @@ MVN = NeuronGroup(1,model = '''M : 1
 
 ## make the synapses
 
-Spg = Synapses(GC,PC,model='''P_post = Wpg*G_pre : 1 (summed)
-								Wpg = x_pre : 1''')
 # Spg = Synapses(GC,PC,model='''P_post = Wpg*G_pre : 1 (summed)
-# 								dWpg/dt = (x_pre*G_pre )/TauPG : 1/min''')
+# 								Wpg = x_pre : 1''')
+Spg = Synapses(GC,PC,model='''P_post = Wpg*G_pre : 1 (summed)
+								dWpg/dt = ((V_post -  gT*cos(t + pT))*G_pre)/TauPG : 1/second''')
 Smv = Synapses(MF,MVN, model='''M_post = M_pre : 1 (summed)''')  ## I made them summed because that makes it work.
 Spv = Synapses(PC,MVN, model='''P_post = P_pre : 1 (summed)
 								V_pre = V_post : 1 (summed)''')  ## I made them summed because that makes it work.
@@ -40,23 +41,24 @@ Spv.connect()
 
 ## create the state monitors
 
-MF_state = StateMonitor(MF,'M',record=0)
+# MF_state = StateMonitor(MF,'M',record=0)
 # GC_state = StateMonitor(GC,'G',record=True)
+Weight_state = StateMonitor(Spg,'Wpg',record=True)
 PC_state = StateMonitor(PC,'P',record=0)
 MVN_state = StateMonitor(MVN,'eyeMovement',record=0)
 
 ## run the model
 
-run(0.1*second)
-print(MVN.M[:])
-print(Smv.M_post[:])
-print(Smv.M_pre[:])
-print()
-run(0.1*second)
-print(MVN.M[:])
-print(Smv.M_post[:])
-print(Smv.M_pre[:])
-run(0.9*second)
+# run(0.1*second)
+# print(MVN.M[:])
+# print(Smv.M_post[:])
+# print(Smv.M_pre[:])
+# print()
+# run(0.1*second)
+# print(MVN.M[:])
+# print(Smv.M_post[:])
+# print(Smv.M_pre[:])
+run(10*second)
 
 ## plot results
 
@@ -70,6 +72,11 @@ if 'GC_state' in locals():
 		figure()
 		subplot(211)
 		plot(GC_state.t/ms,GC_state.G[i])
+if 'Weight_state' in locals():
+	for i in range(0, numberGC):
+		figure()
+		# subplot(211)
+		plot(Weight_state.t/ms,Weight_state.Wpg[i])
 if 'PC_state' in locals():
 	figure()
 	subplot(211)
