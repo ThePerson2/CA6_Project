@@ -3,11 +3,11 @@ import math
 
 numberGC = 10
 
-gT = 0        # target gain. Should vary a bit depending on day of training.
+gT = 1        # target gain. Should vary a bit depending on day of training.
 pT = 0        # target phase shift.
 errorDelay = 0
-TauPG = 9*second
-w = 10*(1/second)   # rate at which the platform rotates.
+TauPG = 1*second
+w = math.pi*3*(1/second)   # rate at which the platform rotates.
 
 ## make the neuron groups
 
@@ -28,7 +28,7 @@ MVN = NeuronGroup(1,model = '''M : 1
 # Spg = Synapses(GC,PC,model='''P_post = Wpg*G_pre : 1 (summed)
 # 								Wpg = x_pre : 1''')
 Spg = Synapses(GC,PC,model='''P_post = Wpg*G_pre : 1 (summed)
-								dWpg/dt = ((V_post -  gT*cos(t + pT))*G_pre)/TauPG : 1/second''')
+								dWpg/dt = ((V_post - gT*cos(w*t + pT))*G_pre)/TauPG : 1/second''')
 Smv = Synapses(MF,MVN, model='''M_post = M_pre : 1 (summed)''')  ## I made them summed because that makes it work.
 Spv = Synapses(PC,MVN, model='''P_post = P_pre : 1 (summed)
 								V_pre = V_post : 1 (summed)''')  ## I made them summed because that makes it work.
@@ -41,9 +41,9 @@ Spv.connect()
 
 ## create the state monitors
 
-# MF_state = StateMonitor(MF,'M',record=0)
+MF_state = StateMonitor(MF,'M',record=0)
 # GC_state = StateMonitor(GC,'G',record=True)
-Weight_state = StateMonitor(Spg,'Wpg',record=True)
+#Weight_state = StateMonitor(Spg,'Wpg',record=True)
 PC_state = StateMonitor(PC,'P',record=0)
 MVN_state = StateMonitor(MVN,'eyeMovement',record=0)
 
