@@ -7,7 +7,7 @@ numberGC = 10
 defaultclock.dt = 0.01*second
 gT = 0        # target gain. Should vary a bit depexnding on day of training.
 pT = 0        # target phase shift.
-unitlessErrorDelay = 0.2 # set the delay here so that the file prints right
+unitlessErrorDelay = 0 # set the delay here so that the file prints right
 errorDelay =  unitlessErrorDelay*second
 if errorDelay != 0:
 	delayQueue = queue.Queue(maxsize = int(errorDelay/defaultclock.dt))
@@ -19,8 +19,6 @@ TauPG = 15*60*second
 w = 0.6*(1/second)   # rate at which the platform rotates.
 vCF = 0
 FiftyMinutesInTimeSteps = int(((second)/defaultclock.dt)*60*50)
-upperPG=2.85
-lowerPG=0.85
 
 ## make the neuron groups
 
@@ -41,12 +39,10 @@ MVN = NeuronGroup(1,model = '''M : 1
 # 								Wpg = x_pre : 1''')
 if (errorDelay == 0):
 	Spg = Synapses(GC,PC,method='euler',model='''P_post = Wpg*G_pre : 1 (summed)
-								gamma = ((V_post - gT*cos(w*(t + pT)))*G_pre)/TauPG : 1/second
-	dWpg/dt=gamma(int(gamma<0)*int(Wpg>lowerPG)+int(gamma>0)*int(Wpg<upperPG))''') # sums granule cell activity into the purkinje cell, as weights are applied.
+								dWpg/dt = ((V_post - gT*cos(w*(t + pT)))*G_pre)/TauPG : 1/second''') # sums granule cell activity into the purkinje cell, as weights are applied.
 else:
 	Spg = Synapses(GC,PC,method='euler',model='''P_post = Wpg*G_pre : 1 (summed)
-								gamma = ((Vdelayed - gT*cos(w*(t - errorDelay + pT)))*G_pre)/TauPG : 1/second
-	dWpg/dt=gamma(int(gamma<0)*int(Wpg>lowerPG)+int(gamma>0)*int(Wpg<upperPG))''') # sums granule cell activity into the purkinje cell, as weights are applied. # Vpast[int(t/(defaultclock.dt*second))] - 
+								dWpg/dt = ((Vdelayed - gT*cos(w*(t - errorDelay + pT)))*G_pre)/TauPG : 1/second''') # sums granule cell activity into the purkinje cell, as weights are applied. # Vpast[int(t/(defaultclock.dt*second))] - 
 
 Smv = Synapses(MF,MVN, model='''M_post = M_pre : 1 (summed)''')  ## I made them summed because that makes it work.
 Spv = Synapses(PC,MVN, model='''P_post = P_pre : 1 (summed)
@@ -71,7 +67,7 @@ MVN_state = StateMonitor(MVN,'V',record=0)
 
 # They are set up like this to immitate the paradigm for the paper.
 if errorDelay != 0:
-	for i in range(0,400):
+	for i in range(0,FiftyMinutesInTimeSteps):
 		run(defaultclock.dt)
 		#print(MVN_state.V[0])
 		#print(list(MVN_state.V[0])[-1])

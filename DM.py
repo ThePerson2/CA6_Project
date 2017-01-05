@@ -4,7 +4,7 @@ import numpy as np
 
 numberGC = 100
 defaultclock.dt = 0.001*second
-runFullExperiment = 1 # set to 1 if you want to run the whole thing. 0 to screw around elsewhere. 
+runFullExperiment = 0 # set to 1 if you want to run the whole thing. 0 to screw around elsewhere. 
 gT = 0        # target gain. Should vary a bit depending on day of training.
 pT = 0        # target phase shift.
 M0=0.25
@@ -16,7 +16,7 @@ Vt0=1
 H=0.03
 L=1
 alpha=0.19
-alphavm = 0.0000056 # ms -1 
+alphavm = 0.0000056*1e3*(1/second) # ms -1 
 alphaD=4.5*(1e-6)*1e3*(1/second)
 alphaPG=3.5*(1e-5)*1e3*(1/second)
 alphaVM=5.5*(1e-6)*1e3*(1/second)
@@ -27,7 +27,9 @@ TauPG = 900*second
 T = 1.666*(second)   # rate at which the platform rotates.
 trialInt = 50*T
 nightInt = 1440*T
-
+upperPG=2.85
+lowerPG=0.85
+lowerVM=0
 gTphase = pie/2 # equations 20 and 21 differ only in this term. When gT goes negative, I will change it through this variable. 
 
 Wig = 2.5
@@ -56,13 +58,18 @@ eqP='P_post=P_pre'
 
 ## make the neuron groups
 
-MF = NeuronGroup(1,'''M = M1*cos((((2*pie)/T)*t)-(pie/2))+M0 : 1''') 
+MF = NeuronGroup(1,'''M = M1*cos((((2*pie)/T)*t)-(pie/2))+M0 : 1
+						P : 1
+						Pini : 1
+						theta=alphavm*(M0-M)*(P-Pini) : (1/second)''') 
 # Cosine Function for the mossy fibers
 
 GC = NeuronGroup(numberGC,
 	'''G = G1*cos((((2*pie)/T)*t)-(pie/2)-x) + G0 : 1
 	x : 1
-	''')
+	WpgG : 1
+	C : 1
+	gamma = (-alphaPG*C+sqrt(alphaPG)*sigma*(randn()))*G+alphaD*(Wpgini-WpgG) : (1/second) ''')
 # Some phase delays of the above function
 	
 for i in range(0, numberGC):
@@ -134,8 +141,11 @@ Spg = Synapses(GC,PC,
 	'''
 	P1_post = Wpg*G_pre : 1 (summed)
 	P1ini_post = Wpgini*G_pre : 1 (summed)
-	dWpg/dt = (-alphaPG*C_post+sqrt(alphaPG)*sigma*(randn()))*G_pre+alphaD*(Wpgini-Wpg) : 1 (clock-driven)
-	''')
+	dWpg/dt=pre_gamma : 1 (clock-driven)
+	WpgG_pre = Wpg : 1
+	C_pre = C_post : 1
+	
+	''') # (int(gamma<0)*int(Wpg>lowerPG)+int(gamma>0)*int(Wpg<upperPG))
 Spg.connect()
 Spg.Wpg=1.85
 # sums granule cell activity into the purkinje cell, as weights are applied.
@@ -144,8 +154,10 @@ Smv = Synapses(MF,MVN,
 	'''
 	VI_post=M_pre : 1 (summed)
 	A_post=2*Wvm*(M_pre-M0) : 1 (summed)
-	dWvm/dt=alphavm*(M0-M_pre)*(P_post-Pini_post) : 1 (clock-driven)
-	''')
+	P_pre = P_post : 1
+	Pini_pre = Pini_post : 1
+	dWvm/dt=pre_theta : 1 (clock-driven)
+	''') # *(1-int(theta<0)*int(Wvm<lowerVM))
 Smv.connect()
 Smv.Wvm=0.88  # make sure Wvm changes. # Set to 1.19 for inhibitory mutants. # Set to 0.7 for excitatory mutants. 
 
@@ -202,7 +214,7 @@ Wpg_state = StateMonitor(Spg,'Wpg',record=True)
 Wvm_state = StateMonitor(Smv,'Wvm',record=True)
 PC_state = StateMonitor(PC,'P',record=0)
 Investigate = StateMonitor(IC,'I',record=0)# set the investigates to whatever you want to track for a given trial.
-Investigate2 = StateMonitor(VT,'Vt',record=0) 
+#Investigate2 = StateMonitor(Spg,'gamma',record=0) 
 Investigate3 = StateMonitor(CF,'C',record=0) 
 Investigate4 = StateMonitor(MVN,'A',record=0)
 MVN_state = StateMonitor(MVN,'eyeMovement',record=0)
@@ -232,9 +244,15 @@ if runFullExperiment:
 	run(trialInt)
 	L = -1
 	run(nightInt)
+# for i in range(1,40000):
+# 	run(.01*second)
+	# if Investigate2.gamma[i] > 2.5:
+	# 	print("qshd")
+	# if Investigate2.Vt[i] < 1.3:
+	# 	print("qshd")
 #gT = -0.5
 
-#run(5.0*second)
+run(5.0*second)
 
 #gT = -1
 
@@ -244,79 +262,79 @@ if runFullExperiment:
 ## plot results
 
 
-if 'MF_state' in locals():
-	figure()
-	subplot(211)
-	plot(MF_state.t/ms,MF_state.M[0])
-	xlabel('time')
-	ylabel('MF')
-	
-if 'GC_state' in locals():
-	for i in range(0, int(numberGC/10)):
-		figure()
-		subplot(211)
-		plot(GC_state.t/ms,GC_state.G[i*10])
-		xlabel('time')
-		ylabel('GC')
-if 'Wpg_state' in locals():
-	for i in range(0, int(numberGC/10)):
-		figure()
-		# subplot(211)
-		plot(Wpg_state.t/ms,Wpg_state.Wpg[i*10])
-if 'Wvm_state' in locals():
-	figure()
-	subplot(211)
-	plot(Wvm_state.t/ms,Wvm_state.Wvm[0])
-	xlabel('time')
-	ylabel('Wvm')
-if 'PC_state' in locals():
-	figure()
-	subplot(211)
-	plot(PC_state.t/ms,PC_state.P[0])
-	xlabel('time')
-	ylabel('PC')
-if 'Investigate' in locals():
-	for i in range(0, 1):
-		figure()
-		# subplot(211)
-		plot(Investigate.t/ms,Investigate.I[i])
-	xlabel('time')
-	ylabel('Investigate')
-if 'Investigate2' in locals():
-	for i in range(0, 1):
-		figure()
-		# subplot(211)
-		plot(Investigate2.t/ms,Investigate2.Vt[i])
-	xlabel('time')
-	ylabel('Investigate2')
-if 'Investigate3' in locals():
-	for i in range(0, 1):
-		figure()
-		# subplot(211)
-		plot(Investigate3.t/ms,Investigate3.C[i])
-	xlabel('time')
-	ylabel('Investigate3')
-if 'Investigate4' in locals():
-	for i in range(0, 1):
-		figure()
-		# subplot(211)
-		plot(Investigate4.t/ms,Investigate4.A[i])
-	xlabel('time')
-	ylabel('Investigate4')
-	
-if 'MVN_state' in locals():
-	figure()
-	subplot(211)
-	plot(MVN_state.t/ms,MVN_state.eyeMovement[0])
-	xlabel('time')
-	ylabel('Eye movement')
-	
-show()
-
-import numpy as np
-from scipy.stats import norm
-np.random.seed(1)
-norm.ppf(np.random.rand(1,5))
+# if 'MF_state' in locals():
+# 	figure()
+# 	subplot(211)
+# 	plot(MF_state.t/ms,MF_state.M[0])
+# 	xlabel('time')
+# 	ylabel('MF')
+# 	
+# if 'GC_state' in locals():
+# 	for i in range(0, int(numberGC/10)):
+# 		figure()
+# 		subplot(211)
+# 		plot(GC_state.t/ms,GC_state.G[i*10])
+# 		xlabel('time')
+# 		ylabel('GC')
+# if 'Wpg_state' in locals():
+# 	for i in range(0, int(numberGC/10)):
+# 		figure()
+# 		# subplot(211)
+# 		plot(Wpg_state.t/ms,Wpg_state.Wpg[i*10])
+# if 'Wvm_state' in locals():
+# 	figure()
+# 	subplot(211)
+# 	plot(Wvm_state.t/ms,Wvm_state.Wvm[0])
+# 	xlabel('time')
+# 	ylabel('Wvm')
+# if 'PC_state' in locals():
+# 	figure()
+# 	subplot(211)
+# 	plot(PC_state.t/ms,PC_state.P[0])
+# 	xlabel('time')
+# 	ylabel('PC')
+# if 'Investigate' in locals():
+# 	for i in range(0, 1):
+# 		figure()
+# 		# subplot(211)
+# 		plot(Investigate.t/ms,Investigate.I[i])
+# 	xlabel('time')
+# 	ylabel('Investigate')
+# if 'Investigate2' in locals():
+# 	for i in range(0, 1):
+# 		figure()
+# 		# subplot(211)
+# 		plot(Investigate2.t/ms,Investigate2.Vt[i])
+# 	xlabel('time')
+# 	ylabel('Investigate2')
+# if 'Investigate3' in locals():
+# 	for i in range(0, 1):
+# 		figure()
+# 		# subplot(211)
+# 		plot(Investigate3.t/ms,Investigate3.C[i])
+# 	xlabel('time')
+# 	ylabel('Investigate3')
+# if 'Investigate4' in locals():
+# 	for i in range(0, 1):
+# 		figure()
+# 		# subplot(211)
+# 		plot(Investigate4.t/ms,Investigate4.A[i])
+# 	xlabel('time')
+# 	ylabel('Investigate4')
+# 	
+# if 'MVN_state' in locals():
+# 	figure()
+# 	subplot(211)
+# 	plot(MVN_state.t/ms,MVN_state.eyeMovement[0])
+# 	xlabel('time')
+# 	ylabel('Eye movement')
+# 	
+# show()
+# 
+# import numpy as np
+# from scipy.stats import norm
+# np.random.seed(1)
+# norm.ppf(np.random.rand(1,5))
 
 
 
